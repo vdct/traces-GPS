@@ -1,7 +1,7 @@
 ﻿DROP TABLE IF EXISTS lignes CASCADE;
 CREATE TABLE lignes
 AS
-SELECT ST_LineFromMultiPoint(ST_Collect(geometrie)) AS geometrie,
+SELECT ST_MakeLine(geometrie ORDER BY horodatage) AS geometrie,
        mode,
        min(date_rec) as date_rec,
        fichier
